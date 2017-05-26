@@ -1,7 +1,7 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
-import NewsScreen from '../screens/NewsScreen';
+import NewsScreen from '../screens/new-screen/NewsScreen';
 
 export const StackRouteNews = StackNavigator({
   NewsScreen: {

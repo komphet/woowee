@@ -2,14 +2,14 @@ import React from 'react';
 import {
   ScrollView,
   StyleSheet,
+  Text,
   View,
-  Text
 } from 'react-native';
-import Colors from '../constants/Colors';
+import Colors from '../../constants/Colors';
 
-export default class FindScreen extends React.Component {
+export default class NewsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Feora',
+    title: 'FEORA',
     headerTintColor: '#FFF',
     headerStyle: { backgroundColor: Colors.tintColor }
   };
@@ -17,7 +17,7 @@ export default class FindScreen extends React.Component {
   render() {
     return (
       <View>
-        <Text>FindScreen</Text>
+        <Text>NewsScreen</Text>
       </View>
     );
   }
@@ -26,5 +26,6 @@ export default class FindScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 15,
   },
 });

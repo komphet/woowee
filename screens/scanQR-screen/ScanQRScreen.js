@@ -5,11 +5,11 @@ import {
   View,
   Text
 } from 'react-native';
-import Colors from '../constants/Colors';
+import Colors from '../../constants/Colors';
 
 export default class ScanQRScreen extends React.Component {
   static navigationOptions = {
-    title: 'Feora',
+    title: 'FEORA',
     headerTintColor: '#FFF',
     headerStyle: { backgroundColor: Colors.tintColor }
   };
