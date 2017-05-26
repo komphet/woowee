@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
@@ -13,7 +14,7 @@ export const Tabs = TabNavigator({
     screen: StackRouteProduct,
     navigationOptions: {
       tabBarLabel: 'Products',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-home' size={30} color={tintColor}  />,
+      tabBarIcon: ({ tintColor }) => <Image source={require('../assets/logo/1.png')} style={{ width: 47, height: 47 }} />,
     }
   },
   news: {
