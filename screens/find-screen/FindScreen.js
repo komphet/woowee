@@ -3,11 +3,16 @@ import {
   ScrollView,
   Dimensions,
   StyleSheet,
+  Alert,
+  ActivityIndicator,
+  Picker,
+  Item,
   View,
   Text
 } from 'react-native';
 import Colors from '../../constants/Colors';
 import { Button, FormLabel, FormInput } from 'react-native-elements';
+import Url from '../../constants/Url';
 
 export default class FindScreen extends React.Component {
   static navigationOptions = {
@@ -19,64 +24,85 @@ export default class FindScreen extends React.Component {
   constructor() {
     super()
     this.state = {
-      province: '',
+      provinceShowSelect: '',
+      province: null,
       district: '',
       subdistrict: '',
+      selected: true,
+      proviceSelected: '',
+      districtSelected: '',
+      subdistrictSelected: '',
     }
   }
 
+   async componentWillMount() {
+    await fetch(Url.province, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        this.setState({
+          province: res,
+        });
+        console.log(this.state.province);
+      })
+      .catch((err) => {
+        Alert.alert( 'เกิดข่อผิดพลาด', 'พบปัญหาระหว่างการส่งข้อมูล', [
+          {text: 'ตกลง'}
+        ])
+        console.log(err);
+      })
+    .done();
+  }
+
+
+  _submit = () => {
+    console.log(this.state.proviceSelected);
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-
-        <View style={styles.form}>
-          <View>
-            <Text style={{ color: 'gray', alignSelf: 'center'}}>ค้นหาตัวแทนจำหน่ายที่ใกล้ที่สุด</Text>
+    let { provinceShowSelect, province, provinceSelected, district, subdistrict } = this.state;
+    if( provinceShowSelect===true)
+      return (
+        <View style={[StyleSheet.absoluteFill, styles.container, styles.selectStyle]}>
+          <View style={styles.form}>
+            <Picker
+              selectedValue={ provinceSelected}
+              onValueChange={(val, name) => this.setState({provinceSelected: val, provinceShowSelect: false })} >
+              {province.map((item, i) =>
+                <Picker.Item label={item.name} value={item.id} key={i} />
+              )}
+            </Picker>
           </View>
-        <View>
-          <FormInput
-            ref="f1"
-            placeholder="จังหวัด"
-            value={this.state.province}
-            returnKeyLabel={"next"}
-            onChangeText={(value) => this.setState({province: value})}
-            containerStyle={styles.formStyle}
-            inputStyle={styles.inputStyle}
-            underlineColorAndroid='rgba(0,0,0,0)'
-          />
+        </View>
+      )
+    else
+      return (
+        <View style={styles.container}>
+          <View style={styles.form}>
+            <View>
+              <Text style={{ color: 'gray', alignSelf: 'center'}}>ค้นหาตัวแทนจำหน่ายที่ใกล้ที่สุด</Text>
+            </View>
+            <View>
+              <Button
+                title={provinceSelected==null? 'จังหวัด': province[provinceSelected-1].name}
+                buttonStyle={styles.formStyle}
+                textStyle={{ color: 'gray', opacity: provinceSelected==null? 0.8: 1 }}
+                onPress={() => this.setState({ provinceShowSelect: true })}
+              />
 
-          <FormInput
-            ref="f2"
-            placeholder="อำเภอ"
-            value={this.state.district}
-            returnKeyLabel={"next"}
-            onChangeText={(value) => this.setState({district: value})}
-            containerStyle={styles.formStyle}
-            inputStyle={styles.inputStyle}
-            underlineColorAndroid='rgba(0,0,0,0)'
-          />
+          </View>
 
-          <FormInput
-            ref="f3"
-            placeholder="ตำบล"
-            value={this.state.subdistrict}
-            returnKeyLabel={"done"}
-            onChangeText={(value) => this.setState({subdistrict: value})}
-            containerStyle={styles.formStyle}
-            inputStyle={styles.inputStyle}
-            underlineColorAndroid='rgba(0,0,0,0)'
-          />
+          <View>
+            <Button
+              title='ค้นหา'
+              buttonStyle={{ borderRadius: 25, padding: 8, backgroundColor: Colors.tintColor }}
+              onPress={this._submit}
+            />
+          </View>
         </View>
 
-        <View>
-          <Button
-            title='ค้นหา'
-            buttonStyle={{ borderRadius: 25, padding: 8, backgroundColor: Colors.tintColor }}
-          />
-        </View>
       </View>
-
-    </View>
     );
   }
 }
@@ -86,6 +112,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 70,
     paddingBottom: 70,
+  },
+
+  selectStyle: {
+    paddingTop: 180,
+    paddingBottom: 180,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   form: {
@@ -101,10 +135,12 @@ const styles = StyleSheet.create({
   },
 
   formStyle: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    padding: 6,
     borderWidth: 1,
     borderRadius: 20,
-    borderBottomColor: 'black',
-    borderColor: 'black',
+    borderBottomColor: 'gray',
+    borderColor: 'gray',
     margin: 10
   },
   inputStyle: {
