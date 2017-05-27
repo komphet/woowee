@@ -25,12 +25,15 @@ export default class FindScreen extends React.Component {
     super()
     this.state = {
       provinceShowSelect: '',
-      province: null,
-      district: '',
-      subdistrict: '',
-      selected: true,
       proviceSelected: '',
+      province: null,
+
       districtSelected: '',
+      district: '',
+
+      subdistrict: '',
+
+      selected: true,
       subdistrictSelected: '',
     }
   }
@@ -56,19 +59,31 @@ export default class FindScreen extends React.Component {
   }
 
 
-  _submit = () => {
-    console.log(this.state.proviceSelected);
+  _provinceSelected = async(val) => {
+    this.setState({
+      provinceSelected: val,
+      provinceShowSelect: false
+    });
+
+    this._getDistrict();
+  }
+
+  _getDistrict = async() => {
   }
 
   render() {
-    let { provinceShowSelect, province, provinceSelected, district, subdistrict } = this.state;
+    let {
+      provinceShowSelect, province, provinceSelected,
+      district, districtShowSelect, districtSelected
+    } = this.state;
     if( provinceShowSelect===true)
       return (
         <View style={[StyleSheet.absoluteFill, styles.container, styles.selectStyle]}>
           <View style={styles.form}>
             <Picker
               selectedValue={ provinceSelected}
-              onValueChange={(val, name) => this.setState({provinceSelected: val, provinceShowSelect: false })} >
+              onValueChange={(val) => this._provinceSelected(val)}
+            >
               {province.map((item, i) =>
                 <Picker.Item label={item.name} value={item.id} key={i} />
               )}
@@ -84,6 +99,7 @@ export default class FindScreen extends React.Component {
               <Text style={{ color: 'gray', alignSelf: 'center'}}>ค้นหาตัวแทนจำหน่ายที่ใกล้ที่สุด</Text>
             </View>
             <View>
+
               <Button
                 title={provinceSelected==null? 'จังหวัด': province[provinceSelected-1].name}
                 buttonStyle={styles.formStyle}
@@ -97,7 +113,6 @@ export default class FindScreen extends React.Component {
             <Button
               title='ค้นหา'
               buttonStyle={{ borderRadius: 25, padding: 8, backgroundColor: Colors.tintColor }}
-              onPress={this._submit}
             />
           </View>
         </View>
