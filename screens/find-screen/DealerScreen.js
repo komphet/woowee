@@ -48,19 +48,24 @@ export default class DealerScreen extends React.Component {
   }
 
   render() {
+    let { data } = this.state;
     return (
       <ScrollView style={styles.container}>
 
-        <View style={styles.card}>
-          <Image source={require('../../assets/logo/1.png')} style={{width: 100, height: 100}}/>
-          <View style={{ alignItems: 'flex-end', justifyContent: 'center'}}>
-            <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>นายโครตโหด กระโดยิง</Text>
-            <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>กรุงเทพ</Text>
+        {data.map((item, i) =>
+          <View style={styles.card}>
+            <View style={{width:100, height: 100, justifyContent: 'center'}}>
+            <Image source={{uri: item.image}} style={{width: 70, height: 70, borderRadius: 35}} />
           </View>
-          <View style={styles.cardUnderline}>
-            <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', color: '#fff'}}>FEDRA-00fsdf-sdf</Text>
+            <View style={{ alignItems: 'flex-end', justifyContent: 'center'}}>
+              <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.title}</Text>
+              <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.provinceName}</Text>
+            </View>
+            <View style={styles.cardUnderline}>
+              <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', color: '#fff'}}>{item.dealerNumber}</Text>
+            </View>
           </View>
-        </View>
+        )}
       </ScrollView>
     );
   }
