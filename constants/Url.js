@@ -1,6 +1,7 @@
 const domain = 'https://lab.feorathailand.com/api/';
 
 export default {
+  domain: domain,
   product: domain + 'product/',
   products: domain + 'products/',
   news: domain + 'news/',
@@ -11,4 +12,5 @@ export default {
 
   subdistrict: domain + 'addresses/district/',
   end_subdistrict: '/subdistricts',
+
 };

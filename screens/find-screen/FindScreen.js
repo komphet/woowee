@@ -28,7 +28,7 @@ export default class FindScreen extends React.Component {
       district: null,
       districtSelected: 0,
       subdistrict: null,
-      subdistrictSelected: 0
+      subdistrictSelected: 0,
     }
   }
 
@@ -71,11 +71,13 @@ export default class FindScreen extends React.Component {
 
   _subdistrictSelect = (id) => {
     this.setState({
-      subdistrictSelected: id
+      subdistrictSelected: id,
     })
   }
 
   _getDistrict = async(id) => {
+    if(this.state.provinceSelected!=0)
+      id = this.state.provinceSelected
     await fetch(Url.district+ id +Url.end_district, {
       method: 'GET'
     })
@@ -94,6 +96,8 @@ export default class FindScreen extends React.Component {
   }
 
   _getsubDistrict = async(id) => {
+    if(this.state.districtSelected!=0)
+      id = this.state.districtSelected
     await fetch(Url.subdistrict+ id +Url.end_subdistrict, {
       method: 'GET'
     })
@@ -102,7 +106,6 @@ export default class FindScreen extends React.Component {
         this.setState({
           subdistrict: res
         })
-        console.log("chala "  +id);
       })
       .catch((err) => {
         Alert.alert('พบข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', [
@@ -114,11 +117,11 @@ export default class FindScreen extends React.Component {
 
   _submit = () => {
     let { provinceSelected, districtSelected, subdistrictSelected} = this.state;
-    console.log(provinceSelected, districtSelected, subdistrictSelected);
+    this.props.navigation.navigate('DealerScreen', {provinceSelected: provinceSelected, districtSelected: districtSelected, subdistrictSelected: subdistrictSelected})
   }
 
   render() {
-    let { province, district, subdistrict } = this.state;
+    let { province, district, subdistrict,subdistrictSelected } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.form}>
@@ -134,23 +137,21 @@ export default class FindScreen extends React.Component {
               onPress={() => this._openModal('SelectScreen', province, this._provinceSelect)}
             />
 
-          {district!=null &&
             <Button
-              title='อำเภอ'
+              title='อำเภอ-เขต'
               buttonStyle={styles.formStyle}
               textStyle={{ color: 'gray', opacity: 0.9}}
               onPress={() => this._openModal('SelectScreen', district, this._districtSelect)}
+              disabled={district==null? true: false}
             />
-          }
 
-          {subdistrict!=null &&
             <Button
-              title='ตำบล'
+              title='แขวง-ตำบล'
               buttonStyle={styles.formStyle}
               textStyle={{ color: 'gray', opacity: 0.9}}
-              onPress={() => this._openModal('SelectScreen', subdistrict, this._getsubDistrict)}
+              onPress={() => this._openModal('SelectScreen', subdistrict, this._subdistrictSelect)}
+              disabled={subdistrict==null? true: false}
             />
-          }
 
           </View>
 
@@ -159,6 +160,7 @@ export default class FindScreen extends React.Component {
               title='ค้นหา'
               buttonStyle={{ borderRadius: 25, padding: 8, backgroundColor: Colors.tintColor }}
               onPress={this._submit}
+              disabled={subdistrictSelected==0? true: false}
             />
           </View>
         </View>
