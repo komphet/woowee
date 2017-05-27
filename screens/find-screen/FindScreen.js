@@ -3,10 +3,9 @@ import {
   ScrollView,
   Dimensions,
   StyleSheet,
-  Alert,
-  ActivityIndicator,
   Picker,
   Item,
+  Alert,
   View,
   Text
 } from 'react-native';
@@ -24,88 +23,134 @@ export default class FindScreen extends React.Component {
   constructor() {
     super()
     this.state = {
-      provinceShowSelect: '',
-      proviceSelected: '',
       province: null,
-
-      districtSelected: '',
-      district: '',
-
-      subdistrict: '',
-
-      selected: true,
-      subdistrictSelected: '',
+      provinceSelected: 0,
+      district: null,
+      districtSelected: 0,
+      subdistrict: null,
+      subdistrictSelected: 0
     }
   }
 
-   async componentWillMount() {
+  async componentWillMount() {
     await fetch(Url.province, {
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((res) => {
         this.setState({
-          province: res,
-        });
-        console.log(this.state.province);
+          province: res
+        })
       })
       .catch((err) => {
-        Alert.alert( 'เกิดข่อผิดพลาด', 'พบปัญหาระหว่างการส่งข้อมูล', [
+        Alert.alert('พบข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', [
           {text: 'ตกลง'}
         ])
-        console.log(err);
       })
-    .done();
+    .done()
   }
 
 
-  _provinceSelected = async(val) => {
+  _openModal = (dest, data, selected) => {
+      this.props.navigation.navigate(dest, {data: data, onSelected: selected})
+  }
+
+  _provinceSelect = (id) => {
     this.setState({
-      provinceSelected: val,
-      provinceShowSelect: false
-    });
-
-    this._getDistrict();
+      provinceSelected: id
+    })
+    this._getDistrict(id);
   }
 
-  _getDistrict = async() => {
+  _districtSelect = (id) => {
+    this.setState({
+      districtSelected: id
+    })
+    this._getsubDistrict(id);
+  }
+
+  _subdistrictSelect = (id) => {
+    this.setState({
+      subdistrictSelected: id
+    })
+  }
+
+  _getDistrict = async(id) => {
+    await fetch(Url.district+ id +Url.end_district, {
+      method: 'GET'
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        this.setState({
+          district: res
+        })
+      })
+      .catch((err) => {
+        Alert.alert('พบข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', [
+          {text: 'ตกลง'}
+        ])
+      })
+    .done()
+  }
+
+  _getsubDistrict = async(id) => {
+    await fetch(Url.subdistrict+ id +Url.end_subdistrict, {
+      method: 'GET'
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        this.setState({
+          subdistrict: res
+        })
+        console.log("chala "  +id);
+      })
+      .catch((err) => {
+        Alert.alert('พบข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', [
+          {text: 'ตกลง'}
+        ])
+      })
+    .done()
+  }
+
+  _submit = () => {
+    let { provinceSelected, districtSelected, subdistrictSelected} = this.state;
+    console.log(provinceSelected, districtSelected, subdistrictSelected);
   }
 
   render() {
-    let {
-      provinceShowSelect, province, provinceSelected,
-      district, districtShowSelect, districtSelected
-    } = this.state;
-    if( provinceShowSelect===true)
-      return (
-        <View style={[StyleSheet.absoluteFill, styles.container, styles.selectStyle]}>
-          <View style={styles.form}>
-            <Picker
-              selectedValue={ provinceSelected}
-              onValueChange={(val) => this._provinceSelected(val)}
-            >
-              {province.map((item, i) =>
-                <Picker.Item label={item.name} value={item.id} key={i} />
-              )}
-            </Picker>
+    let { province, district, subdistrict } = this.state;
+    return (
+      <View style={styles.container}>
+        <View style={styles.form}>
+          <View>
+            <Text style={{ color: 'gray', alignSelf: 'center'}}>ค้นหาตัวแทนจำหน่ายที่ใกล้ที่สุด</Text>
           </View>
-        </View>
-      )
-    else
-      return (
-        <View style={styles.container}>
-          <View style={styles.form}>
-            <View>
-              <Text style={{ color: 'gray', alignSelf: 'center'}}>ค้นหาตัวแทนจำหน่ายที่ใกล้ที่สุด</Text>
-            </View>
-            <View>
+          <View>
 
-              <Button
-                title={provinceSelected==null? 'จังหวัด': province[provinceSelected-1].name}
-                buttonStyle={styles.formStyle}
-                textStyle={{ color: 'gray', opacity: provinceSelected==null? 0.8: 1 }}
-                onPress={() => this.setState({ provinceShowSelect: true })}
-              />
+            <Button
+              title='จังหวัด'
+              buttonStyle={styles.formStyle}
+              textStyle={{ color: 'gray', opacity: 0.9}}
+              onPress={() => this._openModal('SelectScreen', province, this._provinceSelect)}
+            />
+
+          {district!=null &&
+            <Button
+              title='อำเภอ'
+              buttonStyle={styles.formStyle}
+              textStyle={{ color: 'gray', opacity: 0.9}}
+              onPress={() => this._openModal('SelectScreen', district, this._districtSelect)}
+            />
+          }
+
+          {subdistrict!=null &&
+            <Button
+              title='ตำบล'
+              buttonStyle={styles.formStyle}
+              textStyle={{ color: 'gray', opacity: 0.9}}
+              onPress={() => this._openModal('SelectScreen', subdistrict, this._getsubDistrict)}
+            />
+          }
 
           </View>
 
@@ -113,6 +158,7 @@ export default class FindScreen extends React.Component {
             <Button
               title='ค้นหา'
               buttonStyle={{ borderRadius: 25, padding: 8, backgroundColor: Colors.tintColor }}
+              onPress={this._submit}
             />
           </View>
         </View>
