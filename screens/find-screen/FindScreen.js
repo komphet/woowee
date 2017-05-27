@@ -84,8 +84,8 @@ export default class FindScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 60,
-    paddingBottom: 60,
+    paddingTop: 70,
+    paddingBottom: 70,
   },
 
   form: {

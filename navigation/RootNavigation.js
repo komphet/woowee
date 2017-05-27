@@ -48,7 +48,7 @@ export const Tabs = TabNavigator({
     },
     swipeEnabled: false,
     animationEnabled: false,
-    initialRouteName: 'find'
+    initialRouteName: 'product'
   },
 )
 

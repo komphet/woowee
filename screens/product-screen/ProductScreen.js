@@ -17,20 +17,34 @@ export default class ProductScreen extends React.Component {
     headerStyle: { backgroundColor: Colors.tintColor }
   };
 
+  _goto = (product_id) => {
+    this.props.navigation.navigate('ProductView', {pid: product_id})
+  }
+
   render() {
     return (
       <Grid style={styles.container}>
         <Image source={require('../../assets/images/bg-water.jpg')} style={styles.water} />
         <Row style={{ alignItems: 'center' }}>
-          <Image source={require('../../assets/logo/1.png')} style={{ marginBottom: -22 }}/>
+          <TouchableOpacity onPress={() => this._goto(1)} >
+            <Image source={require('../../assets/logo/1.png')} style={{ marginBottom: -22 }} />
+          </TouchableOpacity>
         </Row>
         <Row style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
-          <Image source={require('../../assets/logo/2.png')} style={{ margin: -22 }}/>
-          <Image source={require('../../assets/logo/3.png')} style={{ margin: -22 }}/>
+          <TouchableOpacity onPress={() => this._goto(2)} >
+            <Image source={require('../../assets/logo/2.png')} style={{ margin: -22 }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this._goto(3)} >
+            <Image source={require('../../assets/logo/3.png')} style={{ margin: -22 }} />
+          </TouchableOpacity>
         </Row>
         <Row style={{ justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row' }}>
-          <Image source={require('../../assets/logo/4.png')}  style={{ margin: -12 }}/>
-          <Image source={require('../../assets/logo/5.png')}  style={{ margin: -12 }}/>
+          <TouchableOpacity onPress={() => this._goto(4)} >
+            <Image source={require('../../assets/logo/4.png')}  style={{ margin: -12 }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this._goto(5)} >
+            <Image source={require('../../assets/logo/5.png')}  style={{ margin: -12 }} />
+          </TouchableOpacity>
         </Row>
       </Grid>
     );
