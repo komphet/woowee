@@ -64,7 +64,8 @@ export default class DealerScreen extends React.Component {
         <ScrollView style={styles.container}>
 
           {data.map((item, i) =>
-            <View style={styles.card} key={i}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('PersonDetailScreen', {person_id: item.id})} key={i}>
+            <View style={styles.card}>
               <View style={{width:100, height: 100, justifyContent: 'center'}}>
                 <Image source={{uri: item.image}} style={{width: 70, height: 70, borderRadius: 35}} />
               </View>
@@ -76,6 +77,7 @@ export default class DealerScreen extends React.Component {
                 <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', color: '#fff'}}>{item.dealerNumber}</Text>
               </View>
             </View>
+          </TouchableOpacity>
           )}
         </ScrollView>
       );

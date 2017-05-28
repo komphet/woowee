@@ -13,4 +13,5 @@ export default {
   subdistrict: domain + 'addresses/district/',
   end_subdistrict: '/subdistricts',
 
+  dealerInfo: domain + 'dealer/'
 };

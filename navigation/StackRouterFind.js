@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import FindScreen from '../screens/find-screen/FindScreen';
 import SelectScreen from '../screens/find-screen/SelectScreen';
 import DealerScreen from '../screens/find-screen/DealerScreen';
+import PersonDetailScreen from '../screens/find-screen/PersonDetailScreen';
 
 export const StackRouteFind = StackNavigator({
   FindScreen: {
@@ -14,9 +15,10 @@ export const StackRouteFind = StackNavigator({
   },
   DealerScreen: {
     screen: DealerScreen
+  },
+  PersonDetailScreen: {
+    screen: PersonDetailScreen
   }
-}, {
-  mode: 'modal'
 });
 
 
