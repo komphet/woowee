@@ -1,21 +1,23 @@
 import React from 'react';
 import {
   ScrollView,
+  Dimensions,
   StyleSheet,
   ActivityIndicator,
-  Alert,
-  Text,
-  TouchableOpacity,
-  View,
   Image,
-  Dimensions,
+  Alert,
+  View,
+  Text
 } from 'react-native';
 import Colors from '../../constants/Colors';
+import { Button } from 'react-native-elements';
 import Url from '../../constants/Url';
+import { Ionicons } from '@expo/vector-icons';
 
-export default class NewsScreen extends React.Component {
+
+export default class NewsViewScreen extends React.Component {
   static navigationOptions = {
-    title: 'FEORA   ',
+    title: 'FEORA',
     headerTintColor: '#FFF',
     headerStyle: { backgroundColor: Colors.tintColor }
   };
@@ -29,7 +31,8 @@ export default class NewsScreen extends React.Component {
   }
 
   async componentWillMount() {
-    await fetch(Url.news, {
+    let id  = this.props.navigation.state.params.data_id;
+    await fetch(Url.news + id, {
       method: 'GET'
     })
       .then((response) => response.json())
@@ -38,10 +41,11 @@ export default class NewsScreen extends React.Component {
           data: res,
           onloading: false
         })
+        console.log(data);
       })
       .catch((err) => {
         Alert.alert('พบข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', [
-          {text: 'ตกลง'}
+          {text: 'ตกลง', onPress: () => this.props.navigation.goBack()}
         ])
       })
       .done()
@@ -49,7 +53,8 @@ export default class NewsScreen extends React.Component {
 
   render() {
     let { data, onloading } = this.state;
-    if(onloading === true)
+    let date = data.timestamp.date;
+    if(onloading===true)
       return(
         <ActivityIndicator
           color="gray"
@@ -61,14 +66,18 @@ export default class NewsScreen extends React.Component {
     else
       return (
         <ScrollView style={styles.container}>
-          {data.map((item, i) =>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('NewsViewScreen', {data_id: item.id})} key={i}>
-              <View style={styles.card} >
-                <Image source={{uri: item.image}} style={{width: 270, height: 270, borderRadius: 10, alignSelf: 'center', marginBottom: 10}} />
-                <Text style={{alignSelf: 'center', color: 'gray', opacity: 0.9, fontSize: 16}}>{item.title}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
+          <View style={styles.form}>
+            <Text style={{color: 'gray', opacity: 0.9, fontSize: 16, marginBottom: 15}}>{data.title}</Text>
+
+            <Image source={{uri: data.image}} style={{width: 120, height: 120, borderRadius: 10, marginBottom: 7}} />
+            <View style={{ flexDirection: 'row'}}>
+              <Ionicons name='ios-time-outline' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {date.substr(0, date.indexOf(' '))}  </Text>
+              <Ionicons name='ios-person' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.writer}</Text>
+            </View>
+
+            <Text style={{ color: 'gray'}}>{data.content}</Text>
+          </View>
+
         </ScrollView>
       );
   }
@@ -77,15 +86,17 @@ export default class NewsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 70,
+    paddingBottom: 70,
   },
 
-  card: {
+  form: {
     flex: 1,
     alignSelf: 'center',
+    alignItems: 'center',
     backgroundColor: '#fff',
-    width: Dimensions.get('window').width - 20,
-    padding: 10,
-    margin: 15,
+    width: Dimensions.get('window').width - 100,
+    padding: 12,
     borderRadius: 9,
     shadowRadius: 3,
     shadowOpacity: 0.2,
