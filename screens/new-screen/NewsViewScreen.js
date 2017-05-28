@@ -41,7 +41,6 @@ export default class NewsViewScreen extends React.Component {
           data: res,
           onloading: false
         })
-        console.log(data);
       })
       .catch((err) => {
         Alert.alert('พบข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', [
@@ -53,7 +52,6 @@ export default class NewsViewScreen extends React.Component {
 
   render() {
     let { data, onloading } = this.state;
-    let date = data.timestamp.date;
     if(onloading===true)
       return(
         <ActivityIndicator
@@ -71,7 +69,7 @@ export default class NewsViewScreen extends React.Component {
 
             <Image source={{uri: data.image}} style={{width: 120, height: 120, borderRadius: 10, marginBottom: 7}} />
             <View style={{ flexDirection: 'row'}}>
-              <Ionicons name='ios-time-outline' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {date.substr(0, date.indexOf(' '))}  </Text>
+              <Ionicons name='ios-time-outline' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.timestamp.date.substr(0, data.timestamp.date.indexOf(' '))}  </Text>
               <Ionicons name='ios-person' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.writer}</Text>
             </View>
 
@@ -86,7 +84,7 @@ export default class NewsViewScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 70,
+    paddingTop: 20,
     paddingBottom: 70,
   },
 

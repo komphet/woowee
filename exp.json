@@ -1,20 +1,20 @@
 {
   "name": "feora",
-  "description": "No description",
+  "description": "Feora is good",
   "slug": "feora",
   "privacy": "public",
   "sdkVersion": "17.0.0",
   "version": "1.0.0",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
-  "icon": "./assets/icons/app-icon.png",
+  "icon": "./assets/logo/1.png",
   "notification": {
-    "icon": "./assets/icons/notification-icon.png",
+    "icon": "./assets/logo/1.png",
     "color": "#000000"
   },
   "loading": {
-    "icon": "./assets/icons/loading-icon.png",
-    "hideExponentText": false
+    "icon": "./assets/images/logo.png",
+    "hideExponentText": true
   },
   "packagerOpts": {
     "assetExts": ["ttf"]
