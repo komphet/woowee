@@ -3,6 +3,7 @@ import {
   ScrollView,
   Dimensions,
   Image,
+  ActivityIndicator,
   TouchableOpacity,
   StyleSheet,
   Alert,
@@ -23,7 +24,7 @@ export default class DealerScreen extends React.Component {
   constructor() {
     super()
     this.state = {
-      data: null
+      data: []
     }
   }
 
@@ -49,25 +50,35 @@ export default class DealerScreen extends React.Component {
 
   render() {
     let { data } = this.state;
-    return (
-      <ScrollView style={styles.container}>
+    if(data.length == 0)
+      return(
+        <ActivityIndicator
+          color="gray"
+          animating
+          size="large"
+          style={{ flex: 1, justifyContent: 'center', height: Dimensions.get('window').height-(56*2)-42-24 /*tabbar:56,navigatebar:56,segment:42,statusbar:24*/ }}
+        />
+      )
+    else
+      return (
+        <ScrollView style={styles.container}>
 
-        {data.map((item, i) =>
-          <View style={styles.card}>
-            <View style={{width:100, height: 100, justifyContent: 'center'}}>
-            <Image source={{uri: item.image}} style={{width: 70, height: 70, borderRadius: 35}} />
-          </View>
-            <View style={{ alignItems: 'flex-end', justifyContent: 'center'}}>
-              <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.title}</Text>
-              <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.provinceName}</Text>
+          {data.map((item, i) =>
+            <View style={styles.card} key={i}>
+              <View style={{width:100, height: 100, justifyContent: 'center'}}>
+                <Image source={{uri: item.image}} style={{width: 70, height: 70, borderRadius: 35}} />
+              </View>
+              <View style={{ alignItems: 'flex-end', justifyContent: 'center'}}>
+                <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.title}</Text>
+                <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.provinceName}</Text>
+              </View>
+              <View style={styles.cardUnderline}>
+                <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', color: '#fff'}}>{item.dealerNumber}</Text>
+              </View>
             </View>
-            <View style={styles.cardUnderline}>
-              <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', color: '#fff'}}>{item.dealerNumber}</Text>
-            </View>
-          </View>
-        )}
-      </ScrollView>
-    );
+          )}
+        </ScrollView>
+      );
   }
 }
 
