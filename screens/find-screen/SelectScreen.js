@@ -25,9 +25,9 @@ export default class SelectScreen extends React.Component {
     }
   }
 
-  _onSelect = (id) => {
+  _onSelect = (id, index) => {
     this.props.navigation.goBack();
-    this.props.navigation.state.params.onSelected(id)
+    this.props.navigation.state.params.onSelected(id, index)
   }
 
   render() {
@@ -38,7 +38,7 @@ export default class SelectScreen extends React.Component {
         <List containerStyle={{marginBottom: 20}}>
           {
             data.map((item, i) => (
-              <TouchableOpacity onPress={() => this._onSelect(item.id)} key={i}>
+              <TouchableOpacity onPress={() => this._onSelect(item.id, i)} key={i}>
                 <ListItem
                   title={item.name}
                 />

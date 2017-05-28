@@ -25,10 +25,15 @@ export default class FindScreen extends React.Component {
     this.state = {
       province: null,
       provinceSelected: 0,
+      provinceIndex: null,
+
       district: null,
       districtSelected: 0,
+      districtIndex: null,
+
       subdistrict: null,
       subdistrictSelected: 0,
+      subdistrictIndex: null,
     }
   }
 
@@ -55,23 +60,26 @@ export default class FindScreen extends React.Component {
       this.props.navigation.navigate(dest, {data: data, onSelected: selected})
   }
 
-  _provinceSelect = (id) => {
+  _provinceSelect = (id, index) => {
     this.setState({
-      provinceSelected: id
+      provinceSelected: id,
+      provinceIndex: index,
     })
-    this._getDistrict(id);
+    this._getDistrict(id, index);
   }
 
-  _districtSelect = (id) => {
+  _districtSelect = (id, index) => {
     this.setState({
-      districtSelected: id
+      districtSelected: id,
+      districtIndex: index,
     })
-    this._getsubDistrict(id);
+    this._getsubDistrict(id, index);
   }
 
-  _subdistrictSelect = (id) => {
+  _subdistrictSelect = (id, index) => {
     this.setState({
       subdistrictSelected: id,
+      subdistrictIndex: index,
     })
   }
 
@@ -121,7 +129,7 @@ export default class FindScreen extends React.Component {
   }
 
   render() {
-    let { province, district, subdistrict,subdistrictSelected } = this.state;
+    let { province, provinceIndex, districtIndex, district, subdistrict, subdistrictIndex, subdistrictSelected } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.form}>
@@ -131,14 +139,14 @@ export default class FindScreen extends React.Component {
           <View>
 
             <Button
-              title='จังหวัด'
+              title={provinceIndex==null? 'จังหวัด': province[provinceIndex].name}
               buttonStyle={styles.formStyle}
               textStyle={{ color: 'gray', opacity: 0.9}}
               onPress={() => this._openModal('SelectScreen', province, this._provinceSelect)}
             />
 
             <Button
-              title='อำเภอ-เขต'
+              title={districtIndex==null? 'อำเภอ': district[districtIndex].name}
               buttonStyle={styles.formStyle}
               textStyle={{ color: 'gray', opacity: 0.9}}
               onPress={() => this._openModal('SelectScreen', district, this._districtSelect)}
@@ -146,7 +154,7 @@ export default class FindScreen extends React.Component {
             />
 
             <Button
-              title='แขวง-ตำบล'
+              title={subdistrictIndex==null? 'แขวง-ตำบล': subdistrict[subdistrictIndex].name}
               buttonStyle={styles.formStyle}
               textStyle={{ color: 'gray', opacity: 0.9}}
               onPress={() => this._openModal('SelectScreen', subdistrict, this._subdistrictSelect)}
