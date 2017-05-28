@@ -19,7 +19,12 @@
   "packagerOpts": {
     "assetExts": ["ttf"]
   },
+  "androidShowExponentNotificationInShellApp": "false",
   "ios": {
-    "supportsTablet": true
-  }
+    "supportsTablet": true,
+    "bundleIdentifier": "com.feoraThailand.feora"
+  },
+  "android": {
+     "package": "com.feoraThailand.feora"
+   }
 }
