@@ -15,7 +15,7 @@ import Url from '../../constants/Url';
 
 export default class FindScreen extends React.Component {
   static navigationOptions = {
-    title: 'FEORA',
+    title: 'FEORA   ',
     headerTintColor: '#FFF',
     headerStyle: { backgroundColor: Colors.tintColor }
   };

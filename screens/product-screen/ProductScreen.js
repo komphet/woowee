@@ -12,7 +12,7 @@ import { Button, Grid, Col, Row } from 'react-native-elements';
 
 export default class ProductScreen extends React.Component {
   static navigationOptions = {
-    title: 'FEORA',
+    title: 'FEORA   ',
     headerTintColor: '#FFF',
     headerStyle: { backgroundColor: Colors.tintColor }
   };

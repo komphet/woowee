@@ -17,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default class NewsViewScreen extends React.Component {
   static navigationOptions = {
-    title: 'FEORA',
+    title: 'FEORA   ',
     headerTintColor: '#FFF',
     headerStyle: { backgroundColor: Colors.tintColor }
   };
@@ -64,13 +64,13 @@ export default class NewsViewScreen extends React.Component {
     else
       return (
         <ScrollView style={styles.container}>
-          <View style={styles.form}>
+          <View style={[ styles.form ]}>
             <Text style={{color: 'gray', opacity: 0.9, fontSize: 16, marginBottom: 15}}>{data.title}</Text>
 
             <Image source={{uri: data.image}} style={{width: 120, height: 120, borderRadius: 10, marginBottom: 7}} />
             <View style={{ flexDirection: 'row'}}>
               <Ionicons name='ios-time-outline' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.timestamp.date.substr(0, data.timestamp.date.indexOf(' '))}  </Text>
-              <Ionicons name='ios-person' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.writer}</Text>
+              <Ionicons name='ios-person' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.writer} </Text>
             </View>
 
             <Text style={{ color: 'gray'}}>{data.content}</Text>
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
     paddingBottom: 70,
+    backgroundColor: '#fff'
   },
 
   form: {
