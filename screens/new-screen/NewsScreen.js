@@ -9,7 +9,7 @@ import Colors from '../../constants/Colors';
 
 export default class NewsScreen extends React.Component {
   static navigationOptions = {
-    title: 'FEORA',
+    title: 'FEORA   ',
     headerTintColor: '#FFF',
     headerStyle: { backgroundColor: Colors.tintColor }
   };
