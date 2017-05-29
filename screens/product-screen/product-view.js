@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Colors from '../../constants/Colors';
 import Url from '../../constants/Url';
+import HtmlText from 'react-native-html-to-text';
 
 export default class ProductView extends React.Component {
   static navigationOptions = {
@@ -70,7 +71,7 @@ export default class ProductView extends React.Component {
         </View>
         <ScrollView style={styles.card}>
           <Text style={{ color: 'gray', fontSize: 18 }}>รายละเอียดสินค้า</Text>
-          <Text>{ product.content }</Text>
+          <HtmlText style={{ color: 'gray'}} html={product.content}></HtmlText>
         </ScrollView>
       </View>
       );

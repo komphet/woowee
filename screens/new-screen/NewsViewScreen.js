@@ -13,7 +13,7 @@ import Colors from '../../constants/Colors';
 import { Button } from 'react-native-elements';
 import Url from '../../constants/Url';
 import { Ionicons } from '@expo/vector-icons';
-
+import HtmlText from 'react-native-html-to-text';
 
 export default class NewsViewScreen extends React.Component {
   static navigationOptions = {
@@ -73,7 +73,7 @@ export default class NewsViewScreen extends React.Component {
               <Ionicons name='ios-person' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.writer} </Text>
             </View>
 
-            <Text style={{ color: 'gray'}}>{data.content}</Text>
+            <HtmlText style={{ color: 'gray' }} html={data.content}></HtmlText>
           </View>
 
         </ScrollView>
