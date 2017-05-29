@@ -65,8 +65,8 @@ export default class PersonDetailScreen extends React.Component {
     else
       return (
       <View style={styles.container}>
-          <Image source={{uri: 'https://lab.feorathailand.com/images/200x300/cover.png'}} style={styles.image} />
-          <Image source={{uri: 'https://lab.feorathailand.com/images/200x300/user.png'}} style={styles.imgProfile} />
+          <Image source={{uri: data.coverImage}} style={styles.image} />
+          <Image source={{uri: data.image}} style={styles.imgProfile} />
         <View style={styles.form}>
 
           <View style={{ alignItems: 'center', marginTop: 200 }}>
