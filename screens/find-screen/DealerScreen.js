@@ -74,7 +74,7 @@ export default class DealerScreen extends React.Component {
                 <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.provinceName}</Text>
               </View>
               <View style={styles.cardUnderline}>
-                <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', color: '#fff'}}>{item.dealerNumber}</Text>
+                <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', justifyContent: 'center', color: '#fff'}}>{item.dealerNumber}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
 
   cardUnderline: {
     position: 'absolute',
-    top: 110,
+    top: 105,
     width: Dimensions.get('window').width-20,
     backgroundColor: Colors.tintColor,
     height: 15,
