@@ -38,7 +38,7 @@ export default class SelectScreen extends React.Component {
               <TouchableOpacity onPress={() => this._onSelect(item.id, i)} key={i}>
                 <ListItem
                   title={item.name}
-                  titleStyle={{ fontFamily: 'Sukhumvit'}}
+                  titleStyle={{ color: 'gray', fontFamily: 'Sukhumvit'}}
                 />
               </TouchableOpacity>
             ))

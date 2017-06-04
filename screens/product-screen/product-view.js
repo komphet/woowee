@@ -68,7 +68,7 @@ export default class ProductView extends React.Component {
           <Image source={require('../../assets/images/bg-water.jpg')} style={styles.water} />
           <View style={styles.onCard}>
             <Image source={{uri: product.image}} style={{ width: 150, height: 150 }} />
-            <Text style={{ marginTop: 10, fontSize: 18, width: 200, fontFamily: 'Sukhumvit' }}>{ product.name }</Text>
+            <Text style={{ marginTop: 10, fontSize: 18, width: 200, color: 'gray', fontFamily: 'Sukhumvit' }}>{ product.name }</Text>
         </View>
         <ScrollView style={styles.card}>
           <Text style={{ color: 'gray', fontSize: 18 , fontFamily: 'Sukhumvit'}}>รายละเอียดสินค้า</Text>

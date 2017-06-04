@@ -77,19 +77,19 @@ export default class PersonDetailScreen extends React.Component {
 
           <View style={[ styles.contact, {marginTop: 20} ]}>
             <Image source={require('../../assets/band/call.jpg')} style={styles.icon} />
-            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.telephone}</Text>
+            <Text style={{ color: 'gray', fontFamily: 'Sukhumvit'}}>   {data.telephone}</Text>
           </View>
           <View style={styles.contact}>
             <Image source={require('../../assets/band/line.png')} style={styles.icon} />
-            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.line}</Text>
+            <Text style={{ color: 'gray', fontFamily: 'Sukhumvit'}}>   {data.line}</Text>
           </View>
           <View style={styles.contact}>
             <Image source={require('../../assets/band/facebook.png')} style={styles.icon} />
-            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.facebook}</Text>
+            <Text style={{ color: 'gray', fontFamily: 'Sukhumvit'}}>   {data.facebook}</Text>
           </View>
           <View style={styles.contact}>
             <Image source={require('../../assets/band/instragram.jpg')} style={styles.icon} />
-            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.instragram}</Text>
+            <Text style={{ color: 'gray', fontFamily: 'Sukhumvit'}}>   {data.instragram}</Text>
           </View>
 
           <View style={{flexDirection: 'row', marginTop: 18}}>
