@@ -76,7 +76,7 @@ export default class PersonDetailScreen extends React.Component {
           </View>
 
           <View style={[ styles.contact, {marginTop: 20} ]}>
-            <Image source={require('../../assets/band/call.jpg')} style={styles.icon} />
+            <Image source={require('../../assets/band/call.jpg')} style={[ styles.icon , {width: 33, height: 33, marginLeft: 4}]} />
             <Text style={{ color: 'gray', fontFamily: 'Sukhumvit'}}>   {data.telephone}</Text>
           </View>
           <View style={styles.contact}>
