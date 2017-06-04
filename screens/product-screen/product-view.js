@@ -64,17 +64,17 @@ export default class ProductView extends React.Component {
     }
     else
       return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <Image source={require('../../assets/images/bg-water.jpg')} style={styles.water} />
           <View style={styles.onCard}>
             <Image source={{uri: product.image}} style={{ width: 150, height: 150 }} />
             <Text style={{ marginTop: 10, fontSize: 18, width: 200, color: 'gray', fontFamily: 'Sukhumvit' }}>{ product.name }</Text>
-        </View>
-        <ScrollView style={styles.card}>
-          <Text style={{ color: 'gray', fontSize: 18 , fontFamily: 'Sukhumvit'}}>รายละเอียดสินค้า</Text>
-          <HtmlText style={{ color: 'gray', fontFamily: 'Sukhumvit'}} html={product.content}></HtmlText>
+          </View>
+          <View style={styles.card}>
+            <Text style={{ color: 'gray', fontSize: 18 , fontFamily: 'Sukhumvit'}}>รายละเอียดสินค้า</Text>
+            <HtmlText style={{ color: 'gray', fontFamily: 'Sukhumvit'}} html={product.content}></HtmlText>
+          </View>
         </ScrollView>
-      </View>
       );
   }
 }
@@ -84,14 +84,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingTop: 25,
-    alignItems: 'center',
     paddingBottom: 25
   },
 
   water: {
     position: 'absolute',
     width: Dimensions.get('window').width,
-    height: 150,
+    height: Dimensions.get('window').height-72-24-350, //350 => I guess
     top: Dimensions.get('window').height-72-24-150
   },
 
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 100,
     backgroundColor: '#fff',
     padding: 15,
-    borderRadius: 10,
+    alignSelf: 'center',
     borderRadius: 9,
     shadowRadius: 3,
     shadowOpacity: 0.2,
