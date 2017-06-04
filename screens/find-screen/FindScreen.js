@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'space-around',
     backgroundColor: '#fff',
-    width: Dimensions.get('window').width - 100,
+    width: Dimensions.get('window').width - 40,
     borderRadius: 9,
     shadowRadius: 3,
     shadowOpacity: 0.2,
