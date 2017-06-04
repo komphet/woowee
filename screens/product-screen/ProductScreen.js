@@ -14,7 +14,8 @@ export default class ProductScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   _goto = (product_id) => {

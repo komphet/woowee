@@ -17,7 +17,8 @@ export default class FindScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   constructor() {
@@ -134,21 +135,21 @@ export default class FindScreen extends React.Component {
       <View style={styles.container}>
         <View style={styles.form}>
           <View>
-            <Text style={{ color: 'gray', alignSelf: 'center'}}>ค้นหาตัวแทนจำหน่ายที่ใกล้ที่สุด</Text>
+            <Text style={{ color: 'gray', alignSelf: 'center', fontFamily: 'Sukhumvit'}}>ค้นหาตัวแทนจำหน่ายที่ใกล้ที่สุด</Text>
           </View>
           <View>
 
             <Button
               title={provinceIndex==null? 'จังหวัด': province[provinceIndex].name}
               buttonStyle={styles.formStyle}
-              textStyle={{ color: 'gray', opacity: 0.9}}
+              textStyle={{ color: 'gray', opacity: 0.9, fontFamily: 'Sukhumvit'}}
               onPress={() => this._openModal('SelectScreen', province, this._provinceSelect)}
             />
 
             <Button
               title={districtIndex==null? 'อำเภอ': district[districtIndex].name}
               buttonStyle={styles.formStyle}
-              textStyle={{ color: 'gray', opacity: 0.9}}
+              textStyle={{ color: 'gray', opacity: 0.9, fontFamily: 'Sukhumvit'}}
               onPress={() => this._openModal('SelectScreen', district, this._districtSelect)}
               disabled={district==null? true: false}
             />
@@ -156,7 +157,7 @@ export default class FindScreen extends React.Component {
             <Button
               title={subdistrictIndex==null? 'แขวง-ตำบล': subdistrict[subdistrictIndex].name}
               buttonStyle={styles.formStyle}
-              textStyle={{ color: 'gray', opacity: 0.9}}
+              textStyle={{ color: 'gray', opacity: 0.9, fontFamily: 'Sukhumvit'}}
               onPress={() => this._openModal('SelectScreen', subdistrict, this._subdistrictSelect)}
               disabled={subdistrict==null? true: false}
             />
@@ -169,6 +170,7 @@ export default class FindScreen extends React.Component {
               buttonStyle={{ borderRadius: 25, padding: 8, backgroundColor: Colors.tintColor }}
               onPress={this._submit}
               disabled={subdistrictSelected==0? true: false}
+              textStyle={{fontFamily: 'Sukhumvit'}}
             />
           </View>
         </View>

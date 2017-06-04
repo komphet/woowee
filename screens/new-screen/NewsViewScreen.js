@@ -19,7 +19,8 @@ export default class NewsViewScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   constructor(){
@@ -65,15 +66,15 @@ export default class NewsViewScreen extends React.Component {
       return (
         <ScrollView style={styles.container}>
           <View style={[ styles.form ]}>
-            <Text style={{color: 'gray', opacity: 0.9, fontSize: 16, marginBottom: 15}}>{data.title}</Text>
+            <Text style={{color: 'gray', opacity: 0.9, fontSize: 16, marginBottom: 15, fontFamily: 'Sukhumvit'}}>{data.title}</Text>
 
             <Image source={{uri: data.image}} style={{width: 120, height: 120, borderRadius: 10, marginBottom: 7}} />
             <View style={{ flexDirection: 'row'}}>
-              <Ionicons name='ios-time-outline' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.timestamp.date.substr(0, data.timestamp.date.indexOf(' '))}  </Text>
-              <Ionicons name='ios-person' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor}}> {data.writer} </Text>
+              <Ionicons name='ios-time-outline' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor, fontFamily: 'Sukhumvit'}}> {data.timestamp.date.substr(0, data.timestamp.date.indexOf(' '))}  </Text>
+              <Ionicons name='ios-person' size={12}  /><Text style={{fontSize: 10, marginBottom: 20, color: Colors.tintColor, fontFamily: 'Sukhumvit'}}> {data.writer} </Text>
             </View>
 
-            <HtmlText style={{ color: 'gray' }} html={data.content}></HtmlText>
+            <HtmlText style={{ color: 'gray', fontFamily: 'Sukhumvit' }} html={data.content}></HtmlText>
           </View>
 
         </ScrollView>

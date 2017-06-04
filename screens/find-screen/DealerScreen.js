@@ -18,7 +18,8 @@ export default class DealerScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   constructor() {
@@ -70,11 +71,11 @@ export default class DealerScreen extends React.Component {
                 <Image source={{uri: item.image}} style={{width: 70, height: 70, borderRadius: 35}} />
               </View>
               <View style={{ alignItems: 'flex-end', justifyContent: 'center'}}>
-                <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.title}</Text>
-                <Text style={{color: 'gray', opacity: 0.9, margin: 5}}>{item.provinceName}</Text>
+                <Text style={{color: 'gray', opacity: 0.9, margin: 5, fontFamily: 'Sukhumvit'}}>{item.title}</Text>
+                <Text style={{color: 'gray', opacity: 0.9, margin: 5, fontFamily: 'Sukhumvit'}}>{item.provinceName}</Text>
               </View>
               <View style={styles.cardUnderline}>
-                <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', justifyContent: 'center', color: '#fff'}}>{item.dealerNumber}</Text>
+                <Text style={{ marginRight: 14, fontSize: 9, alignSelf: 'flex-end', justifyContent: 'center', color: '#fff', fontFamily: 'Sukhumvit'}}>{item.dealerNumber}</Text>
               </View>
             </View>
           </TouchableOpacity>

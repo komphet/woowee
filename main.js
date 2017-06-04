@@ -10,6 +10,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import cacheAssetsAsync from './utilities/cacheAssetsAsync';
 import { Tabs } from './navigation/RootNavigation';
+import Colors from './constants/Colors';
 
 
 class AppContainer extends React.Component {
@@ -27,7 +28,7 @@ class AppContainer extends React.Component {
         images: [require('./assets/images/expo-wordmark.png')],
         fonts: [
           FontAwesome.font,
-          { 'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf') },
+          { 'Sukhumvit': require('./assets/fonts/SukhumvitSet-Medium.ttf') },
         ],
       });
     } catch (e) {
@@ -46,7 +47,7 @@ class AppContainer extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
+          {Platform.OS === 'android' && <View style={styles.statusBar} />}
           <Tabs />
         </View>
       );
@@ -61,9 +62,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  statusBarUnderlay: {
+  statusBar: {
     height: 24,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: Colors.tintColor,
   },
 });
 

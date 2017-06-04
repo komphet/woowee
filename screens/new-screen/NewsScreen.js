@@ -17,7 +17,8 @@ export default class NewsScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   constructor(){
@@ -65,7 +66,7 @@ export default class NewsScreen extends React.Component {
             <TouchableOpacity onPress={() => this.props.navigation.navigate('NewsViewScreen', {data_id: item.id})} key={i}>
               <View style={styles.card} >
                 <Image source={{uri: item.image}} style={{width: 270, height: 270, borderRadius: 10, alignSelf: 'center', marginBottom: 10}} />
-                <Text style={{alignSelf: 'center', color: 'gray', opacity: 0.9, fontSize: 16}}>{item.title}</Text>
+                <Text style={{alignSelf: 'center', color: 'gray', opacity: 0.9, fontSize: 16, fontFamily: 'Sukhumvit'}}>{item.title}</Text>
               </View>
             </TouchableOpacity>
           )}

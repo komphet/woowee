@@ -17,7 +17,8 @@ export default class ProductView extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   constructor() {
@@ -67,11 +68,11 @@ export default class ProductView extends React.Component {
           <Image source={require('../../assets/images/bg-water.jpg')} style={styles.water} />
           <View style={styles.onCard}>
             <Image source={{uri: product.image}} style={{ width: 150, height: 150 }} />
-            <Text style={{ marginTop: 10, fontSize: 18, width: 200 }}>{ product.name }</Text>
+            <Text style={{ marginTop: 10, fontSize: 18, width: 200, fontFamily: 'Sukhumvit' }}>{ product.name }</Text>
         </View>
         <ScrollView style={styles.card}>
-          <Text style={{ color: 'gray', fontSize: 18 }}>รายละเอียดสินค้า</Text>
-          <HtmlText style={{ color: 'gray'}} html={product.content}></HtmlText>
+          <Text style={{ color: 'gray', fontSize: 18 , fontFamily: 'Sukhumvit'}}>รายละเอียดสินค้า</Text>
+          <HtmlText style={{ color: 'gray', fontFamily: 'Sukhumvit'}} html={product.content}></HtmlText>
         </ScrollView>
       </View>
       );

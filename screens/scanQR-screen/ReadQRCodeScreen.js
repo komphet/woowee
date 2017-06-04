@@ -12,7 +12,8 @@ export default class ReadQRCodeScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   state = {

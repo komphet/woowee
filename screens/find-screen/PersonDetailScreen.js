@@ -19,7 +19,8 @@ export default class PersonDetailScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
   constructor() {
@@ -70,33 +71,33 @@ export default class PersonDetailScreen extends React.Component {
         <View style={styles.form}>
 
           <View style={{ alignItems: 'center', marginTop: 200 }}>
-            <Text style={{ color: 'gray', opacity: 0.9}}>{data.name}</Text>
-            <Text style={{ color: 'gray', opacity: 0.9 }}>{data.provinceName} - {data.districtName}</Text>
+            <Text style={{ color: 'gray', opacity: 0.9, fontFamily: 'Sukhumvit'}}>{data.name}</Text>
+            <Text style={{ color: 'gray', opacity: 0.9 , fontFamily: 'Sukhumvit'}}>{data.provinceName} - {data.districtName}</Text>
           </View>
 
           <View style={[ styles.contact, {marginTop: 20} ]}>
             <Image source={require('../../assets/band/call.jpg')} style={styles.icon} />
-            <Text>   {data.telephone}</Text>
+            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.telephone}</Text>
           </View>
           <View style={styles.contact}>
             <Image source={require('../../assets/band/line.png')} style={styles.icon} />
-            <Text>   {data.line}</Text>
+            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.line}</Text>
           </View>
           <View style={styles.contact}>
             <Image source={require('../../assets/band/facebook.png')} style={styles.icon} />
-            <Text>   {data.facebook}</Text>
+            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.facebook}</Text>
           </View>
           <View style={styles.contact}>
             <Image source={require('../../assets/band/instragram.jpg')} style={styles.icon} />
-            <Text>   {data.instragram}</Text>
+            <Text style={{ fontFamily: 'Sukhumvit'}}>   {data.instragram}</Text>
           </View>
 
-          <View style={{flexDirection: 'row', marginTop: 28}}>
-            <Ionicons name='ios-checkbox-outline' size={14} color='green' /><Text style={{color: 'gray', opacity: 0.9, fontSize: 12}}> Approved By FEORA</Text>
+          <View style={{flexDirection: 'row', marginTop: 18}}>
+            <Ionicons name='ios-checkbox-outline' size={14} color='green' /><Text style={{color: 'gray', opacity: 0.9, fontSize: 12, fontFamily: 'Sukhumvit'}}> Approved By FEORA</Text>
           </View>
 
           <View style={styles.cardUnderline}>
-            <Text style={{ marginRight: 12, fontSize: 12, alignSelf: 'flex-end', color: '#fff'}}>{data.dealerNumber}</Text>
+            <Text style={{ marginRight: 14, fontSize: 11, alignSelf: 'flex-end', color: '#fff', fontFamily: 'Sukhumvit'}}>{data.dealerNumber}</Text>
           </View>
         </View>
 
@@ -127,10 +128,10 @@ const styles = StyleSheet.create({
 
   cardUnderline: {
     position: 'absolute',
-    top: 509,
+    top: 496,
     width: Dimensions.get('window').width - 40,
     backgroundColor: Colors.tintColor,
-    height: 15,
+    height: 18,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10
   },

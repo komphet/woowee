@@ -13,7 +13,8 @@ export default class ScanQRScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
     headerTintColor: '#FFF',
-    headerStyle: { backgroundColor: Colors.tintColor }
+    headerStyle: { backgroundColor: Colors.tintColor },
+    headerTitleStyle: {fontFamily: 'Sukhumvit'}
   };
 
 
@@ -28,8 +29,9 @@ export default class ScanQRScreen extends React.Component {
           title='SCAN QR'
           onPress={() => this.props.navigation.navigate('ReadQRCodeScreen')}
           buttonStyle={styles.button}
+          textStyle={{fontSize: 14, fontFamily: 'Sukhumvit'}}
         />
-        <Text style={{ color: 'gray', opacity: 0.9}}>Scan QR Code เพื่อลถ้นรับรางวัลที่ท้ายกล่อง FEORA</Text>
+        <Text style={{ color: 'gray', opacity: 0.9, fontFamily: 'Sukhumvit'}}>Scan QR Code เพื่อลถ้นรับรางวัลที่ท้ายกล่อง FEORA</Text>
       </View>
     )
   }
