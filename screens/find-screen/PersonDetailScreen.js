@@ -142,13 +142,7 @@ export default class PersonDetailScreen extends React.Component {
                 </Text>
               </View>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  bottom: 20,
-                  position: "absolute"
-                }}
-              >
+              <View style={styles.contact}>
                 <Ionicons name="ios-checkbox-outline" size={14} color="green" />
                 <Text
                   style={{

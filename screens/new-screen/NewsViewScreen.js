@@ -76,14 +76,15 @@ export default class NewsViewScreen extends React.Component {
       return (
         <ScrollView style={styles.container}>
           <View style={[styles.form]}>
-            <View style={style.title}>
+            <View style={styles.title}>
               <Text
                 style={{
                   color: "gray",
                   opacity: 0.9,
                   fontSize: 16,
                   marginBottom: 15,
-                  fontFamily: "Sukhumvit"
+                  fontFamily: "Sukhumvit",
+                  textAlign: "center"
                 }}
               >
                 {data.title}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -8,65 +8,100 @@ import {
   TouchableOpacity,
   View,
   Image,
-  Dimensions,
-} from 'react-native';
-import Colors from '../../constants/Colors';
-import Url from '../../constants/Url';
+  Dimensions
+} from "react-native";
+import Colors from "../../constants/Colors";
+import Url from "../../constants/Url";
 
 export default class NewsScreen extends React.Component {
   static navigationOptions = {
-    title: 'FEORA   ',
-    headerTintColor: '#FFF',
+    title: "FEORA   ",
+    headerTintColor: "#FFF",
     headerStyle: { backgroundColor: Colors.tintColor },
-    headerTitleStyle: {fontFamily: 'Sukhumvit'}
+    headerTitleStyle: { fontFamily: "Sukhumvit" }
   };
 
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       data: [],
       onloading: true
-    }
+    };
   }
 
   async componentWillMount() {
     await fetch(Url.news, {
-      method: 'GET'
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((res) => {
+      .then(response => response.json())
+      .then(res => {
         this.setState({
           data: res,
           onloading: false
-        })
+        });
       })
-      .catch((err) => {
-        Alert.alert('พบข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', [
-          {text: 'ตกลง'}
-        ])
+      .catch(err => {
+        Alert.alert("พบข้อผิดพลาด", "ไม่สามารถส่งข้อมูลได้", [
+          { text: "ตกลง" }
+        ]);
       })
-      .done()
+      .done();
   }
 
   render() {
     let { data, onloading } = this.state;
-    if(onloading === true)
-      return(
+    if (onloading === true)
+      return (
         <ActivityIndicator
           color="gray"
           animating
           size="large"
-          style={{ flex: 1, justifyContent: 'center', height: Dimensions.get('window').height-(56*2)-42-24 /*tabbar:56,navigatebar:56,segment:42,statusbar:24*/ }}
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            height:
+              Dimensions.get("window").height -
+                56 * 2 -
+                42 -
+                24 /*tabbar:56,navigatebar:56,segment:42,statusbar:24*/
+          }}
         />
-      )
+      );
     else
       return (
         <ScrollView style={styles.container}>
           {data.map((item, i) =>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('NewsViewScreen', {data_id: item.id})} key={i}>
-              <View style={styles.card} >
-                <Image source={{uri: item.image}} style={{width: 270, height: 270, borderRadius: 10, alignSelf: 'center', marginBottom: 10}} />
-                <Text style={{alignSelf: 'center', color: 'gray', opacity: 0.9, fontSize: 16, fontFamily: 'Sukhumvit'}}>{item.title}</Text>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("NewsViewScreen", {
+                  data_id: item.id
+                })}
+              key={i}
+            >
+              <View style={styles.card}>
+                <View style={styles.image}>
+                  <Image
+                    source={{ uri: item.image }}
+                    style={{
+                      width: 270,
+                      height: 270,
+                      alignSelf: "center",
+                      marginBottom: 10
+                    }}
+                  />
+                </View>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    color: "gray",
+                    opacity: 0.9,
+                    fontSize: 16,
+                    fontFamily: "Sukhumvit",
+                    marginTop: 273
+                  }}
+                >
+                  {item.title}
+                </Text>
               </View>
             </TouchableOpacity>
           )}
@@ -77,20 +112,29 @@ export default class NewsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
 
   card: {
     flex: 1,
-    alignSelf: 'center',
-    backgroundColor: '#fff',
-    width: Dimensions.get('window').width - 50,
+    alignSelf: "center",
+    backgroundColor: "#fff",
+    width: Dimensions.get("window").width - 50,
+    height: 350,
     padding: 10,
     margin: 12,
     borderRadius: 9,
     shadowRadius: 3,
     shadowOpacity: 0.2,
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 }
   },
-
+  image: {
+    position: "absolute",
+    top: 0,
+    width: 270,
+    height: 270,
+    borderTopLeftRadius: 9,
+    borderTopRightRadius: 9,
+    overflow: "hidden"
+  }
 });
