@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
     paddingBottom: 70,
-    backgroundColor: '#fff'
+    backgroundColor: '#efeff4'
   },
 
   form: {
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
-    width: Dimensions.get('window').width - 100,
+    width: Dimensions.get('window').width - 40,
     padding: 12,
     borderRadius: 9,
     shadowRadius: 3,
