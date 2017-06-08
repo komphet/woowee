@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width - 20,
         backgroundColor: Colors.tintColor,
         height: 15,
-        borderRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
 
     },
 
