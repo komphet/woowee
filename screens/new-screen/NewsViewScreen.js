@@ -15,6 +15,8 @@ import Url from '../../constants/Url';
 import { Ionicons } from '@expo/vector-icons';
 import HtmlText from 'react-native-html-to-text';
 
+const CARD_WIDTH = Dimensions.get('window').width - 40;
+
 export default class NewsViewScreen extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
-    width: Dimensions.get('window').width - 40,
+    width: CARD_WIDTH,
     padding: 12,
     borderRadius: 9,
     shadowRadius: 3,
