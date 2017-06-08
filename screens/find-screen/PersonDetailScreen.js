@@ -27,7 +27,7 @@ export default class PersonDetailScreen extends React.Component {
     super()
     this.state = {
       data: [],
-      onloading: true
+      onloading: true,
     }
   }
 
@@ -92,7 +92,7 @@ export default class PersonDetailScreen extends React.Component {
             <Text style={{ color: 'gray', fontFamily: 'Sukhumvit'}}>   {data.instragram}</Text>
           </View>
 
-          <View style={{flexDirection: 'row', marginTop: 18}}>
+          <View style={{flexDirection: 'row', bottom: 20, position: 'absolute'}}>
             <Ionicons name='ios-checkbox-outline' size={14} color='green' /><Text style={{color: 'gray', opacity: 0.9, fontSize: 12, fontFamily: 'Sukhumvit'}}> Approved By FEORA</Text>
           </View>
 
@@ -128,12 +128,12 @@ const styles = StyleSheet.create({
 
   cardUnderline: {
     position: 'absolute',
-    top: 496,
+    bottom: 0,
     width: Dimensions.get('window').width - 40,
     backgroundColor: Colors.tintColor,
     height: 18,
     borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10
+    borderBottomRightRadius: 10,
   },
 
   image: {
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     marginLeft: 80,
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    marginBottom: 10
+    marginBottom: 3
   },
 
   icon: {
