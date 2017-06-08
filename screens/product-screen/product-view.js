@@ -13,6 +13,8 @@ import Colors from '../../constants/Colors';
 import Url from '../../constants/Url';
 import HtmlText from 'react-native-html-to-text';
 
+const CARD_WIDTH = Dimensions.get('window').width - 100;
+
 export default class ProductView extends React.Component {
   static navigationOptions = {
     title: 'FEORA   ',
@@ -68,7 +70,9 @@ export default class ProductView extends React.Component {
           <Image source={require('../../assets/images/bg-water.jpg')} style={styles.water} />
           <View style={styles.onCard}>
             <Image source={{uri: product.image}} style={{ width: 150, height: 150 }} />
-            <Text style={{ marginTop: 10, fontSize: 18, width: 200, color: 'gray', fontFamily: 'Sukhumvit' }}>{ product.name }</Text>
+            <View style={{ width: CARD_WIDTH }}>
+              <Text style={{ marginTop: 10, fontSize: 18, color: 'gray', fontFamily: 'Sukhumvit' }}>{ product.name }</Text>
+            </View>
           </View>
           <View style={styles.card}>
             <Text style={{ color: 'gray', fontSize: 18 , fontFamily: 'Sukhumvit'}}>รายละเอียดสินค้า</Text>
@@ -82,7 +86,7 @@ export default class ProductView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
     paddingTop: 25,
     paddingBottom: 25
   },
@@ -96,14 +100,15 @@ const styles = StyleSheet.create({
 
   onCard: {
     alignItems: 'center',
-    margin: 20
+    margin: 20,
   },
 
   card: {
     flex: 1,
-    width: Dimensions.get('window').width - 100,
+    width: CARD_WIDTH,
     backgroundColor: '#fff',
     padding: 15,
+    marginBottom: 40,
     alignSelf: 'center',
     borderRadius: 9,
     shadowRadius: 3,
