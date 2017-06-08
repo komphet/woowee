@@ -79,7 +79,7 @@ export default class PersonDetailScreen extends React.Component {
               <Image source={{ uri: data.coverImage }} style={styles.image} />
             </View>
             <Image source={{ uri: data.image }} style={styles.imgProfile} />
-            <View style={[ styles.form ]}>
+            <View style={[styles.form]}>
 
               <View style={{ alignItems: "center", marginTop: 200 }}>
                 <Text
@@ -220,6 +220,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     alignSelf: "center",
     top: 20,
+    overflow: "hidden"
   },
 
   image: {
