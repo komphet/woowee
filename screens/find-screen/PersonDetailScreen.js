@@ -220,14 +220,14 @@ const styles = StyleSheet.create({
     zIndex: 1,
     alignSelf: "center",
     top: 20,
-    overflow: "hidden"
+    overflow: "hidden",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
   },
 
   image: {
     width: Dimensions.get("window").width - 40,
-    height: 150,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10
+    height: 150
   },
 
   imgProfile: {
