@@ -86,7 +86,9 @@ export default class NewsScreen extends React.Component {
                       width: 270,
                       height: 270,
                       alignSelf: "center",
-                      marginBottom: 10
+                      marginBottom: 10,
+                      borderTopLeftRadius: 9,
+                      borderTopRightRadius: 9
                     }}
                   />
                 </View>

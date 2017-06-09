@@ -142,16 +142,23 @@ export default class PersonDetailScreen extends React.Component {
                 </Text>
               </View>
 
-              <View style={styles.contact}>
-                <Ionicons name="ios-checkbox-outline" size={14} color="green" />
+              <View>
                 <Text
                   style={{
                     color: "gray",
                     opacity: 0.9,
                     fontSize: 12,
-                    fontFamily: "Sukhumvit"
+                    fontFamily: "Sukhumvit",
+                    alignItems: "flex-start",
+                    flexDirection: "row"
                   }}
                 >
+                  <Ionicons
+                    name="ios-checkbox-outline"
+                    size={14}
+                    color="green"
+                  />
+
                   {" "}Approved By FEORA
                 </Text>
               </View>
