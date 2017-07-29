@@ -6,6 +6,7 @@ import {
     StyleSheet,
     View,
     Text
+
 } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 
@@ -33,7 +34,7 @@ class AppContainer extends React.Component {
                 fonts: [
                     FontAwesome.font,
                     {'Sukhumvit': require('./assets/fonts/SukhumvitSet-Medium.ttf')},
-                ],
+                ]
             });
         } catch (e) {
             console.warn(
@@ -47,17 +48,30 @@ class AppContainer extends React.Component {
     }
 
     _loginFacebook = () => {
-        console.log('Pressed!');
+        this.setState({isLogin: true});
+    }
+    _logout = () => {
+        this.setState({isLogin: false});
     }
 
     render() {
         if (this.state.appIsReady) {
             if (this.state.isLogin) {
                 return (
-                    <View style={styles.container}>
-                        {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
-                        {Platform.OS === 'android' && <View style={styles.statusBar}/>}
-                        <Tabs/>
+                    <View style={{
+                        flex: 1,
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <Text>
+                            Coming soon... {'\n'}
+
+                        </Text>
+                        <Button style={{backgroundColor: Colors.base}} textStyle={{fontSize: 18}}
+                                onPress={() => this._logout()}>
+                            Back
+                        </Button>
                     </View>
                 );
             } else {
@@ -65,15 +79,25 @@ class AppContainer extends React.Component {
                     <View style={{
                         flex: 1,
                         flexDirection: 'column',
-                        justifyContent: 'center',
                         alignItems: 'center',
                     }}>
-                        <Image source={require('./assets/images/login-logo.jpg')}/>
-                        <View style={{width: 200, padding: 50}}>
-                            <Button style={{backgroundColor: Colors.base}} textStyle={{fontSize: 18}}
-                                    onPress={() => this._loginFacebook()}>
-                                Connect with Facebook
-                            </Button>
+                        <View style={{position: "absolute", top: 50}}>
+                            <Image source={require('./assets/images/login-logo.jpg')}/>
+                        </View>
+
+                        <View style={{position: "absolute", bottom: 15}}>
+                            <View style={{width: 350, padding: 50}}>
+                                <Button style={{backgroundColor: Colors.base}} textStyle={{fontSize: 18}}
+                                        onPress={() => this._loginFacebook()}>
+                                    Connect with Facebook
+                                </Button>
+                            </View>
+                            <Text style={styles.text}>
+                                This application does not post anything to your Facebook by singing in or singing up.
+                            </Text>
+                            <Text style={styles.text}>
+                                Terms of Service and Privacy Policy
+                            </Text>
                         </View>
 
                     </View>
@@ -95,6 +119,10 @@ const styles = StyleSheet.create({
         height: 24,
         backgroundColor: Colors.tintColor,
     },
+    text: {
+        color: "#d1d1d1",
+        textAlign: "center"
+    }
 });
 
 Expo.registerRootComponent(AppContainer);
