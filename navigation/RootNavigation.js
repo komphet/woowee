@@ -13,7 +13,7 @@ export const Tabs = TabNavigator({
   product: {
     screen: StackRouteProduct,
     navigationOptions: {
-      tabBarLabel: 'Products',
+      tabBarLabel: 'Record',
       tabBarIcon: ({ tintColor }) => <Image source={require('../assets/logo/1.png')} style={{ width: 47, height: 47 }} />,
     }
   },

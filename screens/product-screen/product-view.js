@@ -17,7 +17,7 @@ const CARD_WIDTH = Dimensions.get("window").width - 40;
 
 export default class ProductView extends React.Component {
   static navigationOptions = {
-    title: "FEORA   ",
+    title: "Woowee   ",
     headerTintColor: "#FFF",
     headerStyle: { backgroundColor: Colors.tintColor },
     headerTitleStyle: { fontFamily: "Sukhumvit" }

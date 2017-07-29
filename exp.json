@@ -1,7 +1,7 @@
 {
-  "name": "feora",
-  "description": "Feora is good",
-  "slug": "feora",
+  "name": "woowee",
+  "description": "Applications for the Blind",
+  "slug": "woowee",
   "privacy": "public",
   "sdkVersion": "17.0.0",
   "version": "1.0.0",
@@ -22,9 +22,9 @@
   "androidShowExponentNotificationInShellApp": false,
   "ios": {
     "supportsTablet": true,
-    "bundleIdentifier": "com.feoraThailand.feora"
+    "bundleIdentifier": "com.woowee.woowee"
   },
   "android": {
-     "package": "com.feoraThailand.feora"
+     "package": "com.woowee.woowee"
    }
 }
